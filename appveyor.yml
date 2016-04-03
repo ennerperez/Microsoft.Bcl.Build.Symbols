@@ -1,0 +1,37 @@
+version: 1.0.{build}.0
+branches:
+  only:
+  - master
+  - production
+  except:
+  - gh-pages
+os: Windows Server 2012
+cache:
+- packages -> **\packages.config
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}-{branch}'
+nuget:
+  account_feed: true
+  project_feed: true
+platform: Any CPU
+configuration: Release
+pull_requests:
+  do_not_increment_build_number: true
+build:
+  parallel: true
+  verbosity: detailed
+  publish_nuget: true
+artifacts:
+- path: out\*.nupkg
+notifications:
+- provider: Email
+  to:
+  - ennerperez@gmail.com
+  subject: Microsoft.Bcl.Build.Symbols's AppVeyor Build
+  on_build_success: false
+  on_build_failure: false
+  on_build_status_changed: true
