@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Microsoft.Bcl.Build.Symbols")]
-[assembly: AssemblyDescription("Compile time symbols")]
+[assembly: AssemblyDescription("Provides compile time symbols Microsoft forgot.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Enner Pérez")]
 [assembly: AssemblyProduct("Microsoft.Bcl.Build.Symbols")]

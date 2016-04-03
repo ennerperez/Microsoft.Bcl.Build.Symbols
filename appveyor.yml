@@ -1,6 +1,5 @@
-version: 1.0.{build}.0
-pull_requests:
-  do_not_increment_build_number: true
+version: 1.0.{build}.*
+skip_non_tags: true
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -14,21 +13,9 @@ artifacts:
 - path: '**\*.nupkg'
   name: nupkg
 deploy:
-- provider: NuGet
-  api_key:
-    secure: 4MlQhgnX8YAri6kuhFp+qpwb8s2vk21yFFnfcsPiprPCmLA8WeAALO0Iu2FRjwS7
-  skip_symbols: true
-  artifact: nupkg
 - provider: GitHub
   auth_token:
-    secure: s1axn0765Y8aLo2y9eqsAbDD+fFk9sNyXi+btYt26U/eaxLP0wPQruYBNRmz/oe3
+    secure: UKi94d2MuFkTQQi/a/fCIk77vNm1Iqi90f7PkeJKs8HVvCuGGhxlqNKKblKL6iL+
   artifact: nupkg
+  draft: true
   force_update: true
-notifications:
-- provider: Email
-  to:
-  - ennerperez@gmail.com
-  subject: AppVeyor Build
-  on_build_success: true
-  on_build_failure: true
-  on_build_status_changed: true

@@ -3,15 +3,15 @@
   <metadata minClientVersion="2.8.1">
     <id>$id$</id>
     <version>$version$</version>
-    <title>$description$</title>
+    <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/Microsoft.Bcl.Build.Symbols/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/ennerperez/Microsoft.Bcl.Build.Symbols</projectUrl>
     <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>This package provides build symbol definitions so that projects referencing specific Microsoft Framework can use it in code as compile definition.</description>
-    <summary>Provides compile time symbols Microsoft forgot</summary>
+    <description>Provides build symbol definitions so that projects referencing specific Microsoft Framework can use it in code as compile definition.</description>
+    <summary>$description$</summary>
     <releaseNotes>
       More information about it at:
       - http://stackoverflow.com/questions/3436526/detect-target-framework-version-at-compile-time

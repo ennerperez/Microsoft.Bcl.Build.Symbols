@@ -2,11 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-* Version: major.minor.{build}.revision
-* Order: Changed - Fixed - Added - Removed
+## [Unreleased]
+### Changed
+- Read me update.
+- Nuspect title fix.
+- Start following [SemVer](http://semver.org) properly.
+- Start following [Changelog](http://keepachangelog.com/) properly.
 
-## [1.0.0.0] - 2016-04-02
-
+## [1.0.3] - 2016-04-02
 ### Added
-- Nuspect generation
-- Initial commit
+- Nuspect generation.
+
+## [1.0.2] - 2016-04-02
+### Added
+- Initial commit.
