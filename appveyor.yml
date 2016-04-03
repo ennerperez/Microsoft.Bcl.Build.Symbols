@@ -1,4 +1,10 @@
 version: 1.0.{build}.0
+branches:
+  only:
+  - master
+  - production
+  except:
+  - gh-pages
 skip_non_tags: true
 assembly_info:
   patch: true
@@ -6,6 +12,8 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
+platform: Any CPU
+configuration: Release
 build:
   parallel: true
   verbosity: detailed
