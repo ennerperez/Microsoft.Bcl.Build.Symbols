@@ -1,4 +1,4 @@
-version: 1.0.{build}.*
+version: 1.0.{build}.0
 skip_non_tags: true
 assembly_info:
   patch: true
@@ -17,5 +17,5 @@ deploy:
   auth_token:
     secure: UKi94d2MuFkTQQi/a/fCIk77vNm1Iqi90f7PkeJKs8HVvCuGGhxlqNKKblKL6iL+
   artifact: nupkg
-  draft: true
+  draft: false
   force_update: true
