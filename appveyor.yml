@@ -3,17 +3,17 @@ branches:
   only:
   - master
   - production
-  except:
-  - gh-pages
 skip_non_tags: true
+configuration: Release
+platform: Any CPU
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
-platform: Any CPU
-configuration: Release
+nuget:
+  account_feed: true
 build:
   parallel: true
   verbosity: detailed
