@@ -12,8 +12,6 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
-nuget:
-  account_feed: true
 build:
   parallel: true
   verbosity: detailed
