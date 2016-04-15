@@ -22,6 +22,6 @@
     <tags>Microsoft Bcl Build Symbols</tags>
   </metadata>
   <files>
-    <file src="Microsoft.Bcl.Build.Symbols.targets" target="build\Microsoft.Bcl.Build.Symbols.targets" />
+    <file src="Microsoft.Bcl.Build.Symbols.props" target="build\Microsoft.Bcl.Build.Symbols.props" />
   </files>
 </package>

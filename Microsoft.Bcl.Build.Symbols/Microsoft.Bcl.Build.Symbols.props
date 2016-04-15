@@ -1,14 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
 ***********************************************************************************************
 Microsoft.Bcl.Build.Symbols.props
 
 WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
-          created a backup copy.  Incorrect changes to this file will make it
-          impossible to load or build your projects from the command-line or the IDE.
+					created a backup copy.  Incorrect changes to this file will make it
+					impossible to load or build your projects from the command-line or the IDE.
 
-          Defines the compile time symbols Microsoft forgot
-          Modelled from https://msdn.microsoft.com/en-us/library/ms171464.aspx
-		  
+					Defines the compile time symbols Microsoft forgot
+					Modelled from https://msdn.microsoft.com/en-us/library/ms171464.aspx
+			
 ***********************************************************************************************
 -->
 
