@@ -10,6 +10,20 @@ Provides build symbol definitions so that projects referencing specific Microsof
 
 See the [changelog](CHANGELOG.md) for changes.
 
+## More information about it
+- [http://stackoverflow.com/questions/3436526/detect-target-framework-version-at-compile-time](http://stackoverflow.com/questions/3436526/detect-target-framework-version-at-compile-time)
+- [https://msdn.microsoft.com/en-us/library/ms171464.aspx](https://msdn.microsoft.com/en-us/library/ms171464.aspx)
+
+## Roadmap
+
+- [ ] .NET Framework 5.?
+- [x] .NET Framework 4.6.*
+- [x] .NET Framework 2.0 to 4.5.2
+- [ ] .NET Framework 1.*
+- [ ] .NET TargetFrameworkProfile
+- [ ] Mono & Xamarin
+- [ ] Hostname
+
 ## Usage
 
 Implementing Join(string delimiter, IEnumerable strings) Prior to .NET 4.0

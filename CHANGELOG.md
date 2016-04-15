@@ -6,8 +6,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - File format to props.
 
-###Added
+### Added
 - XML missing header.
+
+### Removed
+- NETFX_462 error.
 
 ## [1.0.5.0] - 2016-04-03
 ### Added
