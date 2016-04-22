@@ -3,7 +3,6 @@ branches:
   only:
   - master
   - production
-skip_non_tags: true
 configuration: Release
 platform: Any CPU
 assembly_info:
