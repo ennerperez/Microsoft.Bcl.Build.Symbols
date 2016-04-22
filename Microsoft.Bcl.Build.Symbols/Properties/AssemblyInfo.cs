@@ -7,11 +7,15 @@ using System.Runtime.InteropServices;
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Microsoft.Bcl.Build.Symbols")]
 [assembly: AssemblyDescription("Provides compile time symbols Microsoft forgot.")]
-[assembly: AssemblyConfiguration("")]
+#if DEBUG
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif
 [assembly: AssemblyCompany("Enner Pérez")]
 [assembly: AssemblyProduct("Microsoft.Bcl.Build.Symbols")]
 [assembly: AssemblyCopyright("Copyright © Enner Pérez 2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("© Enner Pérez")]
 [assembly: AssemblyCulture("en")]
 
 // Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 
