@@ -1,4 +1,4 @@
-version: 1.0.{build}.0
+version: 1.0.{build}
 branches:
   only:
   - master
@@ -9,9 +9,9 @@ platform: Any CPU
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+  assembly_version: '{version}.*'
+  assembly_file_version: '{version}.*'
+  assembly_informational_version: '{version}-{branch}'
 build:
   parallel: true
   verbosity: detailed
@@ -20,6 +20,7 @@ artifacts:
   name: nupkg
 deploy:
 - provider: GitHub
+  tag: v{version}
   auth_token:
     secure: UKi94d2MuFkTQQi/a/fCIk77vNm1Iqi90f7PkeJKs8HVvCuGGhxlqNKKblKL6iL+
   artifact: nupkg

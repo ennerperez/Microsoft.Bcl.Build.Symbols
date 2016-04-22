@@ -20,9 +20,11 @@ See the [changelog](CHANGELOG.md) for changes.
 - [x] .NET Framework 4.6.*
 - [x] .NET Framework 2.0 to 4.5.2
 - [ ] .NET Framework 1.*
+- [x] .NET Portable
 - [ ] .NET TargetFrameworkProfile
-- [ ] Mono & Xamarin
-- [ ] Hostname
+- [ ] Xamarin & Mono + iOS
+- [ ] Reload projects after install
+- [ ] Remove symbols definitions after un-install
 
 ## Usage
 
