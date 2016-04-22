@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{ADC858A8-518A-4C89-B4E8-A994DD07B212}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		appveyor.yml = appveyor.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Bcl.Build.Symbols", "Microsoft.Bcl.Build.Symbols\Microsoft.Bcl.Build.Symbols.csproj", "{A619D960-0942-47BC-B908-F940ECBFA1E1}"
