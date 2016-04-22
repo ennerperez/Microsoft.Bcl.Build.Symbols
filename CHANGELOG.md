@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.11] - 2016-04-21
+## [1.0.14] - 2016-04-22
 ### Changed
 - File format to targets.
 
