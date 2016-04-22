@@ -26,8 +26,11 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('3.0'))))   &gt;= 0">$(DefineConstants);NETFX_30</DefineConstants>
     <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('2.0'))))   &gt;= 0">$(DefineConstants);NETFX_20</DefineConstants>
     <!--
-    <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('1.1'))))   &gt;= 0">$(DefineConstants);NETFX_11</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('1.0'))))   &gt;= 0">$(DefineConstants);NETFX_10</DefineConstants>
-    -->
+		<DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('1.1'))))   &gt;= 0">$(DefineConstants);NETFX_11</DefineConstants>
+		<DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('1.0'))))   &gt;= 0">$(DefineConstants);NETFX_10</DefineConstants>
+		-->
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
+    <DefineConstants>$(DefineConstants);PORTABLE</DefineConstants>
   </PropertyGroup>
 </Project>
