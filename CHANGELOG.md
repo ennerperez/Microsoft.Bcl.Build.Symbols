@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.15] - 2016-04-25
+### Fixed
+- Xamarin build bug.
+
 ## [1.0.14] - 2016-04-22
 ### Changed
 - File format to targets.
