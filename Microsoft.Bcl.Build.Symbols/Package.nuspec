@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/ennerperez/Microsoft.Bcl.Build.Symbols</projectUrl>
     <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Provides build symbol definitions so that projects referencing specific Microsoft Framework can use it in code as compile definition.</description>
+    <description>Provides build symbol definitions so that projects referencing specific .NET Framework can use it in code as compile definition.</description>
     <summary>$description$</summary>
     <releaseNotes>
       More information about it at:
@@ -19,9 +19,11 @@
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <language>en</language>
-    <tags>Microsoft Bcl Build Symbols</tags>
+    <tags>Microsoft Bcl Build Symbols Framework .NET</tags>
   </metadata>
   <files>
-    <file src="$id$.targets" target="build\$id$.targets" />
+    <file src="build\" target="build" />
+    <file src="tools\" target="tools" />
+    <file src="bin\$configuration$\$id$.dll" target="tools\$id$.dll" />
   </files>
 </package>

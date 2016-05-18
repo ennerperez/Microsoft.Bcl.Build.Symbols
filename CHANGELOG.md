@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.16] - 2016-05-18
+### Added
+- Install/Uninstall scripts
+
 ## [1.0.15] - 2016-04-25
 ### Fixed
 - Xamarin build bug.
@@ -26,11 +30,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.5] - 2016-04-03
 ### Added
 - Read me update.
-- Nuspect title fix.
+- Nuspec title fix.
 - Start following [SemVer](http://semver.org) properly.
 - Start following [Changelog](http://keepachangelog.com/) properly.
 
 ## [1.0.3] - 2016-04-02
 ### Added
-- Nuspect generation.
+- Nuspec generation.
 - Initial commit.

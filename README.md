@@ -1,7 +1,7 @@
 ![logo](http://go.microsoft.com/fwlink/?LinkID=288859)
 
 # Microsoft.Bcl.Build.Symbols
-Provides build symbol definitions so that projects referencing specific Microsoft .NET Framework can use it in code as compile definition.
+Provides build symbols definitions so that projects referencing specific Microsoft .NET Framework can use it in code as compile definition.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/uciwrypxuvsbeuqa?svg=true)](https://ci.appveyor.com/project/ennerperez/microsoft-bcl-build-symbols)
 [![NuGet](http://img.shields.io/nuget/v/Microsoft.Bcl.Build.Symbols.svg)](https://www.nuget.org/packages/Microsoft.Bcl.Build.Symbols/)
@@ -23,8 +23,6 @@ See the [changelog](CHANGELOG.md) for changes.
 - [x] .NET Portable
 - [ ] .NET TargetFrameworkProfile
 - [ ] Xamarin & Mono + iOS
-- [ ] Reload projects after install
-- [ ] Remove symbols definitions after un-install
 
 ## Usage
 
