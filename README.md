@@ -21,8 +21,9 @@ See the [changelog](CHANGELOG.md) for changes.
 - [x] .NET Framework 2.0 to 4.5.2
 - [ ] .NET Framework 1.*
 - [x] .NET Portable
-- [ ] .NET TargetFrameworkProfile
-- [ ] Xamarin & Mono + iOS
+- [x] .NET Profiles
+- [x] Mono
+- [ ] Xamarin [iOS / Android]
 
 ## Usage
 
@@ -31,12 +32,21 @@ Implementing Join(string delimiter, IEnumerable strings) Prior to .NET 4.0
 ```
 // string Join(this IEnumerable<string> strings, string delimiter)
 // was not introduced until 4.0. So provide our own.
-#if ! NETFX_40 && NETFX_35
+#if !NETFX_40 && NETFX_35
 public static string Join( string delimiter, IEnumerable<string> strings)
 {
     return string.Join(delimiter, strings.ToArray());
 }
 #endif
+
+// Or...
+
+[Conditional("PORTABLE")]
+public static string Join( string delimiter, IEnumerable<string> strings)
+{
+    return string.Join(delimiter, strings.ToArray());
+}
+
 ```
 
 ## Implementing in your application

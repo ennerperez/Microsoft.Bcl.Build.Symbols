@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.17] - 2016-05-20
+### Added
+- .NET Profiles
+- Mono detection
+
+### Removed
+- Install/Uninstall scripts due a bug
+
 ## [1.0.16] - 2016-05-18
 ### Added
 - Install/Uninstall scripts
