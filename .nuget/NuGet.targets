@@ -13,7 +13,7 @@
     <RequireRestoreConsent Condition=" '$(RequireRestoreConsent)' != 'false' ">true</RequireRestoreConsent>
 
     <!-- Download NuGet.exe if it does not already exist -->
-    <DownloadNuGetExe Condition=" '$(DownloadNuGetExe)' == '' ">false</DownloadNuGetExe>
+    <DownloadNuGetExe Condition=" '$(DownloadNuGetExe)' == '' ">true</DownloadNuGetExe>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(PackageSources)' == '' ">
@@ -36,14 +36,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackagesProjectConfig Condition=" '$(OS)' == 'Windows_NT'">$(MSBuildProjectDirectory)\packages.$(MSBuildProjectName.Replace(' ', '_')).config</PackagesProjectConfig>
-    <PackagesProjectConfig Condition=" '$(OS)' != 'Windows_NT'">$(MSBuildProjectDirectory)\packages.$(MSBuildProjectName).config</PackagesProjectConfig>
+    <PackagesProjectConfig>packages.$(MSBuildProjectName.Replace(' ', '_')).config</PackagesProjectConfig>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <PackagesConfig Condition="Exists('$(MSBuildProjectDirectory)\packages.config')">$(MSBuildProjectDirectory)\packages.config</PackagesConfig>
-    <PackagesConfig Condition="Exists('$(PackagesProjectConfig)')">$(PackagesProjectConfig)</PackagesConfig>
-  </PropertyGroup>
+  <Choose>
+    <When Condition="Exists('$(PackagesProjectConfig)')">
+      <PropertyGroup>
+        <PackagesConfig>$(PackagesProjectConfig)</PackagesConfig>
+      </PropertyGroup>
+    </When>
+    <When Condition="Exists('packages.config')">
+      <PropertyGroup>
+        <PackagesConfig>packages.config</PackagesConfig>
+      </PropertyGroup>
+    </When>
+  </Choose>
 
   <PropertyGroup>
     <!-- NuGet command -->
@@ -51,7 +58,7 @@
     <PackageSources Condition=" $(PackageSources) == '' ">@(PackageSource)</PackageSources>
 
     <NuGetCommand Condition=" '$(OS)' == 'Windows_NT'">"$(NuGetExePath)"</NuGetCommand>
-    <NuGetCommand Condition=" '$(OS)' != 'Windows_NT' ">mono --runtime=v4.0.30319 "$(NuGetExePath)"</NuGetCommand>
+    <NuGetCommand Condition=" '$(OS)' != 'Windows_NT' ">mono --runtime=v4.0.30319 $(NuGetExePath)</NuGetCommand>
 
     <PackageOutputDir Condition="$(PackageOutputDir) == ''">$(TargetDir.Trim('\\'))</PackageOutputDir>
 
@@ -78,7 +85,7 @@
     </BuildDependsOn>
   </PropertyGroup>
 
-  <Target Name="CheckPrerequisites">
+  <Target Name="CheckPrerequisites" Condition=" '$(OS)' == 'Windows_NT'">
     <!-- Raise an error if we're unable to locate nuget.exe  -->
     <Error Condition="'$(DownloadNuGetExe)' != 'true' AND !Exists('$(NuGetExePath)')" Text="Unable to locate '$(NuGetExePath)'" />
     <!--
@@ -102,9 +109,9 @@
           Condition="'$(OS)' == 'Windows_NT' And Exists('$(PackagesConfig)')" />
   </Target>
 
-  <Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites" Condition="Exists('$(ProjectDir)Package.nuspec') AND $(ConfigurationName) == 'Release'">
+  <Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites" Condition="Exists('$(ProjectDir)Package.nuspec') AND $(ConfigurationName) == 'Release' ">
     <Exec Command="$(BuildCommand)"
-          Condition=" '$(OS)' != 'Windows_NT' " />
+  Condition=" '$(OS)' != 'Windows_NT' " />
 
     <Exec Command="$(BuildCommand)"
           LogStandardErrorAsError="true"

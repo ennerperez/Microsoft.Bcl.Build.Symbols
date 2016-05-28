@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.18] - 2016-05-28
+### Fixed
+- Xamarin build bug.
+
 ## [1.0.17] - 2016-05-20
 ### Added
 - .NET Profiles

@@ -23,6 +23,5 @@
   </metadata>
   <files>
     <file src="build\" target="build" />
-    <file src="bin\$configuration$\$id$.dll" target="tools\$id$.dll" />
   </files>
 </package>
