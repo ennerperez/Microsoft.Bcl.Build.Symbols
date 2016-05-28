@@ -17,12 +17,13 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
   <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
     <DefineConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">$(DefineConstants);PORTABLE</DefineConstants>
     <DefineConstants Condition="'$(TargetFrameworkProfile.ToUpper())' == 'MONO'">$(DefineConstants);MONO</DefineConstants>
-    <DefineConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile')) AND $(TargetFrameworkProfile.Length > 7)">
-      $(DefineConstants);PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7))
-    </DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFrameworkVersion)' != '' AND '$(OS)' == 'Windows_NT' ">
+
+    <DefineConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile')) AND $(TargetFrameworkProfile.Length &gt; 7)">
+      $(DefineConstants);PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7))
+    </DefineConstants>
 
     <FrameworkVersion>$(TargetFrameworkVersion.Substring(1))</FrameworkVersion>
 
