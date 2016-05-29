@@ -13,37 +13,42 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
 ***********************************************************************************************
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-  <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
-    <DefineConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">$(DefineConstants);PORTABLE</DefineConstants>
-    <DefineConstants Condition="'$(TargetFrameworkProfile.ToUpper())' == 'MONO'">$(DefineConstants);MONO</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFrameworkVersion)' != '' AND '$(OS)' == 'Windows_NT' ">
-
-    <DefineConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile')) AND $(TargetFrameworkProfile.Length &gt; 7)">
-      $(DefineConstants);PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7))
-    </DefineConstants>
-
+  <PropertyGroup Condition="'$(TargetFrameworkVersion)' != ''">
     <FrameworkVersion>$(TargetFrameworkVersion.Substring(1))</FrameworkVersion>
-
-    <!--<DefineConstants Condition="$([System.String]::Compare('$(TargetFrameworkProfile)','Profile',true)) &gt;= 0">$(DefineConstants);$(TargetFrameworkProfile.ToUpper())</DefineConstants>-->
-
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('4.6.1')))) &gt;= 0">$(DefineConstants);NETFX_461</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('4.6'))))   &gt;= 0">$(DefineConstants);NETFX_46</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('4.5.2')))) &gt;= 0">$(DefineConstants);NETFX_452</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('4.5.1')))) &gt;= 0">$(DefineConstants);NETFX_451</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('4.5'))))   &gt;= 0">$(DefineConstants);NETFX_45</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('4.0'))))   &gt;= 0">$(DefineConstants);NETFX_40</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('3.5'))))   &gt;= 0">$(DefineConstants);NETFX_35</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('3.0'))))   &gt;= 0">$(DefineConstants);NETFX_30</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('2.0'))))   &gt;= 0">$(DefineConstants);NETFX_20</DefineConstants>
-
-    <!--
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('1.1'))))   &gt;= 0">$(DefineConstants);NETFX_11</DefineConstants>
-    <DefineConstants Condition="$([System.Version]::Parse('$(FrameworkVersion)').CompareTo($([System.Version]::Parse('1.0'))))   &gt;= 0">$(DefineConstants);NETFX_10</DefineConstants>
-    -->
-
+    <FrameworkNumber>$(FrameworkVersion.Replace(".", "").PadRight(3,"0"))</FrameworkNumber>
   </PropertyGroup>
-
+  <!--- Framework Version -->
+  <PropertyGroup Condition="'$(TargetFrameworkVersion)' != ''">
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 461">$(FrameworkConstants)NETFX_461;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 460">$(FrameworkConstants)NETFX_46;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 452">$(FrameworkConstants)NETFX_452;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 451">$(FrameworkConstants)NETFX_451;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 450">$(FrameworkConstants)NETFX_45;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 400">$(FrameworkConstants)NETFX_40;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 350">$(FrameworkConstants)NETFX_35;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 300">$(FrameworkConstants)NETFX_30;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 200">$(FrameworkConstants)NETFX_20;</FrameworkConstants>
+    <!--		
+		<FrameworkConstants Condition="$(FrameworkNumber) &gt;= 110">$(FrameworkConstants)NETFX_11;</FrameworkConstants>
+		<FrameworkConstants Condition="$(FrameworkNumber) &gt;= 100">$(FrameworkConstants)NETFX_10;</FrameworkConstants>
+		-->
+  </PropertyGroup>
+  <!--- Framework Profiles -->
+  <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
+    <FrameworkConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">PORTABLE;PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7));$(FrameworkConstants)</FrameworkConstants>
+  </PropertyGroup>
+  <!--- Mono -->
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT' ">
+    <FrameworkConstants>MONO;$(FrameworkConstants)</FrameworkConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
+    <FrameworkConstants Condition="'$(TargetFrameworkProfile)' != '' AND '$(TargetFrameworkProfile.ToUpper())' == 'MONO'">MONO;$(FrameworkConstants)</FrameworkConstants>
+  </PropertyGroup>
+  <!--- Messages -->
+  <Target Name="BeforeBuild">
+    <Message Importance="High" Text="Frameworks #$(FrameworkNumber): '$(FrameworkConstants)'" />
+  </Target>
+  <PropertyGroup>
+    <DefineConstants Condition="'$(FrameworkConstants)' != ''">$(DefineConstants);$(FrameworkConstants)</DefineConstants>
+  </PropertyGroup>
 </Project>
