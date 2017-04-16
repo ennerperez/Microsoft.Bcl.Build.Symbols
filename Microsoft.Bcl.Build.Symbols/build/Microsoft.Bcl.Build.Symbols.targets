@@ -19,6 +19,8 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
   </PropertyGroup>
   <!--- Framework Version -->
   <PropertyGroup Condition="'$(TargetFrameworkVersion)' != ''">
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 470">$(FrameworkConstants)NETFX_47;</FrameworkConstants>
+    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 462">$(FrameworkConstants)NETFX_462;</FrameworkConstants>
     <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 461">$(FrameworkConstants)NETFX_461;</FrameworkConstants>
     <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 460">$(FrameworkConstants)NETFX_46;</FrameworkConstants>
     <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 452">$(FrameworkConstants)NETFX_452;</FrameworkConstants>
