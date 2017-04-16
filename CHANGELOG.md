@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.22] - [2017-04-16]
+### Added
+- Framework 4.6.2
+- Framework 4.7
+
 ## [1.0.19] - [2016-05-28]
 ### Changed
 - Framework detection optimized
