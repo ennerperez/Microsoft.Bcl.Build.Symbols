@@ -18,15 +18,13 @@ See the [changelog](CHANGELOG.md) for changes.
 
 ## Roadmap
 
-- [ ] .NET Framework 5.?
 - [x] .NET Framework 4.7
 - [x] .NET Framework 4.6.1-2
 - [x] .NET Framework 2.0 to 4.5.2
-- [ ] .NET Framework 1.*
 - [x] .NET Portable
 - [x] .NET Profiles
 - [x] Mono
-- [ ] Xamarin [iOS / Android]
+- [x] Xamarin [iOS / Android]
 
 ## Table of contents
 
