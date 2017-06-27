@@ -4,11 +4,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Microsoft.Bcl.Build.Symbols")]
 [assembly: AssemblyDescription("Provides compile time symbols for .NET Framework.")]
-#if DEBUG
-[assembly: AssemblyConfiguration("DEBUG")]
-#else
-[assembly: AssemblyConfiguration("RELEASE")]
-#endif
+
 [assembly: AssemblyCompany("Enner Pérez")]
 [assembly: AssemblyProduct("Microsoft.Bcl.Build.Symbols")]
 [assembly: AssemblyCopyright("Copyright © Enner Pérez")]
