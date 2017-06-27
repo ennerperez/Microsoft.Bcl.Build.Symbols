@@ -46,11 +46,24 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
     <FrameworkConstants Condition="'$(TargetFrameworkProfile)' != '' AND '$(TargetFrameworkProfile.ToUpper())' == 'MONO'">MONO;$(FrameworkConstants)</FrameworkConstants>
   </PropertyGroup>
+  <!-- Xamarin -->
+  <PropertyGroup Condition="'$(XamarinAndroidVersion)' != '' OR '$(IOSDebuggerPort)' != ''">
+    <FrameworkConstants>XAMARIN;$(FrameworkConstants)</FrameworkConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(XamarinAndroidVersion)' != ''">
+    <FrameworkConstants>ANDROID;$(FrameworkConstants)</FrameworkConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(IOSDebuggerPort)' != ''">
+    <FrameworkConstants>IOS;$(FrameworkConstants)</FrameworkConstants>
+  </PropertyGroup>
+  
   <!--- Messages -->
   <Target Name="BeforeBuild">
     <Message Importance="High" Text="Frameworks #$(FrameworkNumber): '$(FrameworkConstants)'" />
   </Target>
+
   <PropertyGroup>
-    <DefineConstants Condition="'$(FrameworkConstants)' != ''">$(DefineConstants);$(FrameworkConstants)</DefineConstants>
+    <DefineConstants Condition="'$(FrameworkConstants)' != ''">$(FrameworkConstants)$(DefineConstants)</DefineConstants>
   </PropertyGroup>
+  
 </Project>

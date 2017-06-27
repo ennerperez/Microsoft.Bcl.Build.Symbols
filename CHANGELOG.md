@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.23] - [2017-06-27]
+### Added
+- Xamarin
+- iOS
+- Android
+
 ## [1.0.22] - [2017-04-16]
 ### Added
 - Framework 4.6.2
