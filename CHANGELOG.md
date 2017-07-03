@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.24] - [2017-07-02]
+### Fixed
+- Critical missing targets files
+
 ## [1.1.23] - [2017-06-27]
 ### Added
 - Xamarin
