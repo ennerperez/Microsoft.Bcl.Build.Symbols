@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.0.1706270620" />
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.2324" />
   </ItemGroup>
 
 </Project>

@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Bcl.Build.Symbols">
-      <HintPath>..\..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270620\lib\net40\Microsoft.Bcl.Build.Symbols.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,7 +56,7 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270448\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270448\build\Microsoft.Bcl.Build.Symbols.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270620\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270620\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.2324\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.2324\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270620\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.0.1706270620\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.2324\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.2324\build\Microsoft.Bcl.Build.Symbols.targets')" />
 </Project>
