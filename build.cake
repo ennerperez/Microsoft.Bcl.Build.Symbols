@@ -2,6 +2,8 @@
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
+var solution = "./Microsoft.Bcl.Build.Symbols.sln";
+var nuspec = "./Microsoft.Bcl.Build.Symbols/Package.nuspec";
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var assemblyInfo = ParseAssemblyInfo("./Microsoft.Bcl.Build.Symbols/Properties/AssemblyInfo.cs");
@@ -12,7 +14,7 @@ var version = EnvironmentVariable ("APPVEYOR_BUILD_VERSION") ?? Argument("versio
 //////////////////////////////////////////////////////////////////////
 
 // Define directories.
-var buildDir = Directory("./Microsoft.Bcl.Build.Symbols/bin") + Directory(configuration);
+var buildDir = Directory("../Build/" + configuration);
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -28,7 +30,7 @@ Task("Restore-NuGet-Packages")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    NuGetRestore("./Microsoft.Bcl.Build.Symbols.sln");
+    NuGetRestore(solution);
 });
 
 Task("Build")
@@ -39,29 +41,52 @@ Task("Build")
     if(IsRunningOnWindows())
     {
 	  var settings = new MSBuildSettings()
+	  .WithProperty("OutputPath", buildDir)
 	  .WithProperty("PackageVersion", version)
 	  .WithProperty("BuildSymbolsPackage", "false");
 	  settings.SetConfiguration(configuration);
       // Use MSBuild
-      MSBuild("./Microsoft.Bcl.Build.Symbols.sln", settings);
+      MSBuild(solution, settings);
     }
     else
     {
 	  var settings = new XBuildSettings()
+	  .WithProperty("OutputPath", buildDir)
 	  .WithProperty("PackageVersion", version)
 	  .WithProperty("BuildSymbolsPackage", "false");
 	  settings.SetConfiguration(configuration);
       // Use XBuild
-      XBuild("./Microsoft.Bcl.Build.Symbols.sln", settings);
+      XBuild(solution, settings);
     }
 });
+
+Task("Build-NuGet-Packages")
+    .IsDependentOn("Build")
+    .Does(() =>
+    {
+	   var nuGetPackSettings = new NuGetPackSettings()
+	   {
+		OutputDirectory = "Build/" + configuration,
+		IncludeReferencedProjects = false,
+		Id = assemblyInfo.Title,
+		Version = version,
+		Authors = new [] {assemblyInfo.Company},
+		Summary = assemblyInfo.Description,
+		Copyright = assemblyInfo.Copyright,
+		Properties = new Dictionary<string, string>()
+		{
+			{ "Configuration", configuration }
+		}
+	   };
+	   NuGetPack(nuspec, nuGetPackSettings);			 
+    });
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-	.IsDependentOn("Build");
+	.IsDependentOn("Build-NuGet-Packages");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
