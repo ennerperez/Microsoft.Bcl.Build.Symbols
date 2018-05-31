@@ -8,9 +8,4 @@
   <ItemGroup>
     <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Program.cs" Link="Program.cs" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.2324" />
-  </ItemGroup>
-
 </Project>
