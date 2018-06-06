@@ -2,19 +2,27 @@
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
-var solution = "./Microsoft.Bcl.Build.Symbols.sln";
-var nuspec = "./Microsoft.Bcl.Build.Symbols/Package.nuspec";
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
-var assemblyInfo = ParseAssemblyInfo("./Microsoft.Bcl.Build.Symbols/Properties/AssemblyInfo.cs");
-var version = EnvironmentVariable ("APPVEYOR_BUILD_VERSION") ?? Argument("version", assemblyInfo.AssemblyFileVersion);
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
+// Define solution.
+var solution = "./Microsoft.Bcl.Build.Symbols.sln";
+
+// Define AssemblyInfo source.
+var assemblyInfoVersion = ParseAssemblyInfo("./Microsoft.Bcl.Build.Symbols/Properties/AssemblyInfo.cs");
+
+// Define version.
+var elapsedSpan = new TimeSpan(DateTime.Now.Ticks - new DateTime(2001, 1, 1).Ticks);
+var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace("*", elapsedSpan.Ticks.ToString().Substring(4, 4));
+var version = EnvironmentVariable ("APPVEYOR_BUILD_VERSION") ?? Argument("version", assemblyVersion);
+
 // Define directories.
-var buildDir = Directory("../Build/" + configuration);
+var outputDirectory = "Build/" + configuration;
+var buildDir = Directory("../" + outputDirectory);
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -64,21 +72,27 @@ Task("Build-NuGet-Packages")
     .IsDependentOn("Build")
     .Does(() =>
     {
-	   var nuGetPackSettings = new NuGetPackSettings()
-	   {
-		OutputDirectory = "Build/" + configuration,
-		IncludeReferencedProjects = false,
-		Id = assemblyInfo.Title,
-		Version = version,
-		Authors = new [] {assemblyInfo.Company},
-		Summary = assemblyInfo.Description,
-		Copyright = assemblyInfo.Copyright,
-		Properties = new Dictionary<string, string>()
-		{
-			{ "Configuration", configuration }
-		}
-	   };
-	   NuGetPack(nuspec, nuGetPackSettings);			 
+	   foreach (var folder in new System.IO.FileInfo(solution).Directory.GetDirectories())
+		  foreach (var file in folder.GetFiles("*.nuspec"))
+		  {
+			 var assemblyInfo = ParseAssemblyInfo(folder + "/Properties/AssemblyInfo.cs");
+			 var nuGetPackSettings = new NuGetPackSettings()
+			 {
+			 OutputDirectory = outputDirectory,
+			 IncludeReferencedProjects = true,
+			 Id = assemblyInfo.Title.Replace(" ", "."),
+			 Title = assemblyInfo.Title,
+			 Version = version,
+			 Authors = new [] {assemblyInfo.Company},
+			 Summary = assemblyInfo.Description,
+			 Copyright = assemblyInfo.Copyright,
+			 Properties = new Dictionary<string, string>()
+				{
+				    { "Configuration", configuration }
+				}
+			 };   
+			 NuGetPack(file.FullName, nuGetPackSettings);
+		  }	   
     });
 
 //////////////////////////////////////////////////////////////////////

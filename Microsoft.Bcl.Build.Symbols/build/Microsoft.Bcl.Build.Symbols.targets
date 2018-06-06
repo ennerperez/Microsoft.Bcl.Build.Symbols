@@ -19,51 +19,74 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
   </PropertyGroup>
   <!--- Framework Version -->
   <PropertyGroup Condition="'$(TargetFrameworkVersion)' != ''">
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 470">$(FrameworkConstants)NETFX_47;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 462">$(FrameworkConstants)NETFX_462;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 461">$(FrameworkConstants)NETFX_461;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 460">$(FrameworkConstants)NETFX_46;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 452">$(FrameworkConstants)NETFX_452;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 451">$(FrameworkConstants)NETFX_451;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 450">$(FrameworkConstants)NETFX_45;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 400">$(FrameworkConstants)NETFX_40;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 350">$(FrameworkConstants)NETFX_35;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 300">$(FrameworkConstants)NETFX_30;</FrameworkConstants>
-    <FrameworkConstants Condition="$(FrameworkNumber) &gt;= 200">$(FrameworkConstants)NETFX_20;</FrameworkConstants>
-    <!--		
-		<FrameworkConstants Condition="$(FrameworkNumber) &gt;= 110">$(FrameworkConstants)NETFX_11;</FrameworkConstants>
-		<FrameworkConstants Condition="$(FrameworkNumber) &gt;= 100">$(FrameworkConstants)NETFX_10;</FrameworkConstants>
+    <!--
+		<NETFX Condition="$(FrameworkNumber) &gt;= 100">NETFX_10</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 110">NETFX_11</NETFX>
 		-->
+    <NETFX Condition="$(FrameworkNumber) &gt;= 200">NETFX_20</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 300">NETFX_30</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 350">NETFX_35</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 400">NETFX_40</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 450">NETFX_45</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 451">NETFX_451</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 452">NETFX_452</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 460">NETFX_46</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 461">NETFX_461</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 462">NETFX_462</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 470">NETFX_47</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 471">NETFX_471</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 472">NETFX_472</NETFX>
+
+    <NETFX Condition="$(FrameworkNumber) &lt; 200 OR $(FrameworkNumber) &gt; 472"></NETFX>
+
+    <BuildConstants Condition="'$(NETFX)' != ''">$(BuildConstants)$(NETFX);</BuildConstants>
   </PropertyGroup>
   <!--- Framework Profiles -->
   <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
-    <FrameworkConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">PORTABLE;PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7));$(FrameworkConstants)</FrameworkConstants>
+    <BuildConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">PORTABLE;PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7));$(BuildConstants)</BuildConstants>
   </PropertyGroup>
   <!--- Mono -->
   <PropertyGroup Condition="'$(OS)' != 'Windows_NT' ">
-    <FrameworkConstants>MONO;$(FrameworkConstants)</FrameworkConstants>
+    <BuildConstants>MONO;$(BuildConstants)</BuildConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
-    <FrameworkConstants Condition="'$(TargetFrameworkProfile)' != '' AND '$(TargetFrameworkProfile.ToUpper())' == 'MONO'">MONO;$(FrameworkConstants)</FrameworkConstants>
+    <BuildConstants Condition="'$(TargetFrameworkProfile)' != '' AND '$(TargetFrameworkProfile.ToUpper())' == 'MONO'">MONO;$(BuildConstants)</BuildConstants>
   </PropertyGroup>
   <!-- Xamarin -->
   <PropertyGroup Condition="'$(XamarinAndroidVersion)' != '' OR '$(IOSDebuggerPort)' != ''">
-    <FrameworkConstants>XAMARIN;$(FrameworkConstants)</FrameworkConstants>
+    <BuildConstants>XAMARIN;$(BuildConstants)</BuildConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(XamarinAndroidVersion)' != ''">
-    <FrameworkConstants>ANDROID;$(FrameworkConstants)</FrameworkConstants>
+    <BuildConstants>ANDROID;$(BuildConstants)</BuildConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IOSDebuggerPort)' != ''">
-    <FrameworkConstants>IOS;$(FrameworkConstants)</FrameworkConstants>
+    <BuildConstants>IOS;$(BuildConstants)</BuildConstants>
   </PropertyGroup>
-  
+  <!-- C# Version -->
+  <PropertyGroup>
+    <!--
+    <CSHARP Condition="$(LangVersion) == 1   OR $(FrameworkNumber) == 100">CSHARP_10</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 1.2 OR $(FrameworkNumber) == 110">CSHARP_12</CSHARP>
+    -->
+    <CSHARP Condition="$(LangVersion) == 2 OR $(FrameworkNumber) == 200">CSHARP_20</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 3 OR $(FrameworkNumber) == 350">CSHARP_30</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 4 OR $(FrameworkNumber) == 400">CSHARP_40</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 5 OR $(FrameworkNumber) == 450">CSHARP_50</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 6 OR ($(FrameworkNumber) &gt;= 460 AND $(FrameworkNumber) &lt;= 462)">CSHARP_60</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 7 OR ($(FrameworkNumber) &gt;= 470 AND $(FrameworkNumber) &lt;= 472)">CSHARP_70</CSHARP>
+
+    <BuildConstants Condition="'$(CSHARP)' != ''">$(BuildConstants)$(CSHARP);</BuildConstants>
+  </PropertyGroup>
+
   <!--- Messages -->
   <Target Name="BeforeBuild">
-    <Message Importance="High" Text="Frameworks #$(FrameworkNumber): '$(FrameworkConstants)'" />
+    <Message Importance="High" Text="BuildConstants: $(BuildConstants)" />
+    <Message Importance="High" Condition="'$(FrameworkNumber)' != ''"  Text=" - FrameworkNumber: $(FrameworkNumber)" />
+    <Message Importance="High" Condition="'$(NETFX)' != ''"  Text=" - Frameworks: $(NETFX)" />
+    <Message Importance="High" Condition="'$(CSHARP)' != ''" Text=" - Language: $(CSHARP)" />
   </Target>
 
   <PropertyGroup>
-    <DefineConstants Condition="'$(FrameworkConstants)' != ''">$(FrameworkConstants)$(DefineConstants)</DefineConstants>
+    <DefineConstants Condition="'$(BuildConstants)' != ''">$(BuildConstants)$(DefineConstants)</DefineConstants>
   </PropertyGroup>
-  
 </Project>

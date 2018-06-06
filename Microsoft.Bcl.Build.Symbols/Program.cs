@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Microsoft.Bcl.Build.Symbols
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             Console.ReadKey();
