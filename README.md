@@ -18,7 +18,7 @@ See the [changelog](CHANGELOG.md) for changes.
 
 ## Roadmap
 
-- [x] .NET Framework 4.7
+- [x] .NET Framework 4.7.1-1
 - [x] .NET Framework 4.6.1-2
 - [x] .NET Framework 2.0 to 4.5.2
 - [x] .NET Portable
