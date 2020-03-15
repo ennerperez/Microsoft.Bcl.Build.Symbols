@@ -18,8 +18,8 @@ See the [changelog](CHANGELOG.md) for changes.
 
 ## Roadmap
 
-- [ ] .NET Core 1.0-3.1
-- [ ] .NET Standards 1.0-2.1
+- [x] .NET Core 1.0-3.1
+- [x] .NET Standards 1.0-2.1
 - [x] .NET Framework 4.8
 - [x] .NET Framework 4.7.1-2
 - [x] .NET Framework 4.6.1-2

@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.27] - [2020-03-15]
+### Changed
+- .NET Core Detection
+- .NET Standar Detection
+- Debug Information
+- Logic Simplification
+- Examples Enhancements
+
 ## [1.1.26] - [2020-03-14]
 ### Changed
 - NuGet Packages Definition

@@ -22,7 +22,8 @@ var solutions = new Dictionary<string, string> {
 var assemblyInfoVersion = ParseAssemblyInfo("./src/Microsoft.Bcl.Build.Symbols/Properties/AssemblyInfo.cs");
 
 // Define version.
-var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace(".*", "");
+var ticks = DateTime.Now.ToString("ddHHmmss");
+var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace(".*", "." + ticks.Substring(ticks.Length-8,8));
 var version = EnvironmentVariable("APPVEYOR_BUILD_VERSION") ?? Argument("version", assemblyVersion);
 
 //////////////////////////////////////////////////////////////////////
@@ -33,9 +34,8 @@ Task("Clean")
     .Does(() =>
 {
     CleanDirectory(buildDir);
-    CleanDirectories("./**/bin");
-    CleanDirectories("./**/obj");
-	CleanDirectories("./**/samples/packages");
+    //CleanDirectories("./**/bin");
+    //CleanDirectories("./**/obj");
 });
 
 Task("Restore-NuGet-Packages")
