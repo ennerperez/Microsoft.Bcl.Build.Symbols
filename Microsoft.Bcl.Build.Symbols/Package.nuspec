@@ -4,12 +4,12 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://raw.githubusercontent.com/ennerperez/Microsoft.Bcl.Build.Symbols/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/ennerperez/Microsoft.Bcl.Build.Symbols</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/ennerperez/Microsoft.Bcl.Build.Symbols/master/.editoricon.png</iconUrl>
+    <authors>$author$</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>.editoricon.png</icon>
+    <projectUrl>https://github.com/ennerperez/Microsoft.Bcl.Build.Symbols</projectUrl>
     <developmentDependency>true</developmentDependency>
     <description>Provides build symbol definitions so that projects referencing specific .NET Framework can use it in code as compile definition.</description>
     <summary>$description$</summary>
@@ -19,10 +19,13 @@
       - https://msdn.microsoft.com/en-us/library/ms171464.aspx
     </releaseNotes>
     <copyright>$copyright$</copyright>
-    <language>en</language>
     <tags>Microsoft Bcl Build Symbols Framework .NET</tags>
+    <repository type="git" url="https://github.com/ennerperez/Microsoft.Bcl.Build.Symbols" />
   </metadata>
   <files>
+    <file src="..\.editoricon.png" target=".editoricon.png" />
+    <file src="..\README.md" target="README.md" />
+    <file src="..\CHANGELOG.md" target="CHANGELOG.md" />
     <file src="build\" target="build" />
   </files>
 </package>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Bcl.Build.Symbols", "Microsoft.Bcl.Build.Symbols\Microsoft.Bcl.Build.Symbols.csproj", "{A619D960-0942-47BC-B908-F940ECBFA1E1}"
 EndProject
@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		build.cake = build.cake
 		build.ps1 = build.ps1
+		build.sh = build.sh
 		CHANGELOG.md = CHANGELOG.md
 		LICENSE = LICENSE
 		README.md = README.md
@@ -82,6 +83,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F46497FA-D57A-4592-80D2-0B1A18C99B15}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2C7D4C79-E876-4DE4-806A-D02EB3C14B9B} = {601B7835-A1B0-4B4D-83A3-5F3CAD74944B}

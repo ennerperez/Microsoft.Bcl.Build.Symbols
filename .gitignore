@@ -280,7 +280,7 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 tools/**
-# !tools/packages.config
+!tools/packages.config
 
 # Telerik's JustMock configuration file
 *.jmconfig
@@ -292,3 +292,9 @@ tools/**
 *.xsd.cs
 
 # End of https://www.gitignore.io/api/visualstudio
+
+# Exceptions
+
+!**/Microsoft.Bcl.Build.Symbols.targets
+
+# End of Exceptions
