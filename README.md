@@ -1,4 +1,4 @@
-![logo](.editoricon.png)
+![logo](src/.editoricon.png)
 
 # Microsoft.Bcl.Build.Symbols
 
@@ -20,7 +20,7 @@ See the [changelog](CHANGELOG.md) for changes.
 
 - [ ] .NET Core 1.0-3.1
 - [ ] .NET Standards 1.0-2.1
-- [ ] .NET Framework 4.8
+- [x] .NET Framework 4.8
 - [x] .NET Framework 4.7.1-2
 - [x] .NET Framework 4.6.1-2
 - [x] .NET Framework 2.0 to 4.5.2

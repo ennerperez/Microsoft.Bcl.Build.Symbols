@@ -2,11 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.1.24] - [2020-03-14]
+## [1.1.26] - [2020-03-14]
 ### Changed
 - NuGet Packages Definition
 - Missing Files
-- .NET Core Detection
+
+## [1.1.25] - [2018-06-06]
+### Fixed
+- Critical missing targets files
 
 ## [1.1.24] - [2017-07-02]
 ### Fixed
