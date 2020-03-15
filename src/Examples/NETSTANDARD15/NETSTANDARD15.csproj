@@ -11,11 +11,4 @@
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.2.0.15044239">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
 </Project>
