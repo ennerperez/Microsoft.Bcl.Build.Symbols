@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+***********************************************************************************************
+Microsoft.Bcl.Build.Symbols.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+          Defines the compile time symbols Microsoft forgot
+          Modeled from https://msdn.microsoft.com/en-us/library/ms171464.aspx
+          Including definitions from https://docs.microsoft.com/en-us/dotnet/standard/frameworks
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup Condition="'$(TargetFrameworkVersion)' != ''">
+    <FrameworkVersion>$(TargetFrameworkVersion.Substring(1))</FrameworkVersion>
+    <FrameworkNumber>$(FrameworkVersion.Replace(".", "").PadRight(3,"0"))</FrameworkNumber>
+  </PropertyGroup>
+
+  <!-- FRAMEWORK -->
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^net\d'))">
+    <ISNETFX>NETFX</ISNETFX>
+    <DefineConstants>$(BuildConstants)$(NETFX);</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netstandard\d'))">
+    <ISNETSTANDARD>NETSTANDARD</ISNETSTANDARD>
+    <DefineConstants>$(BuildConstants)$(NETSTANDARD);</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netcoreapp\d'))">
+    <ISNETCORE>NETCORE</ISNETCORE>
+    <DefineConstants>$(BuildConstants)$(NETCORE);</DefineConstants>
+  </PropertyGroup>
+
+  <!--- NETFX -->
+  <PropertyGroup Condition="'$(FrameworkNumber)' != ''">
+    <!--
+		<NETFX Condition="$(FrameworkNumber) &gt;= 100">NETFX_10</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 110">NETFX_11</NETFX>
+		-->
+    <NETFX Condition="$(FrameworkNumber) &gt;= 200">NETFX_20</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 300">NETFX_30</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 350">NETFX_35</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 400">NETFX_40</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 450">NETFX_45</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 451">NETFX_451</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 452">NETFX_452</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 460">NETFX_46</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 461">NETFX_461</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 462">NETFX_462</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 470">NETFX_47</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 471">NETFX_471</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 472">NETFX_472</NETFX>
+    <NETFX Condition="$(FrameworkNumber) &gt;= 480">NETFX_48</NETFX>
+
+    <ISNETFX Condition="'$(ISNETFX)' == ''">NETFX</ISNETFX>
+
+    <BuildConstants Condition="'$(ISNETFX)' != ''">$(BuildConstants)$(ISNETFX);</BuildConstants>
+    <BuildConstants Condition="'$(NETFX)' != ''">$(BuildConstants)$(NETFX);</BuildConstants>
+  </PropertyGroup>
+  <!-- NETSTANDARD -->
+  <PropertyGroup Condition="'$(TargetFramework)' != ''">
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.0'">NETSTANDARD_10</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.1'">NETSTANDARD_11</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.2'">NETSTANDARD_12</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.3'">NETSTANDARD_13</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.4'">NETSTANDARD_14</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.5'">NETSTANDARD_15</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.6'">NETSTANDARD_16</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard2.0'">NETSTANDARD_20</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard2.1'">NETSTANDARD_21</NETSTANDARD>
+
+    <ISNETSTANDARD Condition="'$(ISNETSTANDARD)' == ''">NETSTANDARD</ISNETSTANDARD>
+
+    <BuildConstants Condition="'$(ISNETSTANDARD)' != ''">$(BuildConstants)$(ISNETSTANDARD);</BuildConstants>
+    <BuildConstants Condition="'$(NETSTANDARD)' != ''">$(BuildConstants)$(NETSTANDARD);</BuildConstants>
+  </PropertyGroup>
+  <!-- NETCORE -->
+  <PropertyGroup Condition="'$(TargetFramework)' != ''">
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp1.0'">NETCORE_10</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp1.1'">NETCORE_11</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp2.0'">NETCORE_20</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp2.1'">NETCORE_21</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp2.2'">NETCORE_22</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp3.0'">NETCORE_30</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'netcoreapp3.1'">NETCORE_31</NETCORE>
+
+    <ISNETCORE Condition="'$(ISNETCORE)' == ''">NETCORE</ISNETCORE>
+
+    <BuildConstants Condition="'$(ISNETCORE)' != ''">$(BuildConstants)$(ISNETCORE);</BuildConstants>
+    <BuildConstants Condition="'$(NETCORE)' != ''">$(BuildConstants)$(NETCORE);</BuildConstants>
+  </PropertyGroup>
+
+  <!--- Profiles -->
+  <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
+    <BuildConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">PORTABLE;PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7));$(BuildConstants)</BuildConstants>
+  </PropertyGroup>
+  <!--- Mono -->
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT' ">
+    <BuildConstants>MONO;$(BuildConstants)</BuildConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
+    <BuildConstants Condition="'$(TargetFrameworkProfile)' != '' AND '$(TargetFrameworkProfile.ToUpper())' == 'MONO'">MONO;$(BuildConstants)</BuildConstants>
+  </PropertyGroup>
+  <!-- Xamarin -->
+  <PropertyGroup Condition="'$(XamarinAndroidVersion)' != '' OR '$(IOSDebuggerPort)' != ''">
+    <BuildConstants>XAMARIN;$(BuildConstants)</BuildConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(XamarinAndroidVersion)' != ''">
+    <BuildConstants>ANDROID;$(BuildConstants)</BuildConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(IOSDebuggerPort)' != ''">
+    <BuildConstants>IOS;$(BuildConstants)</BuildConstants>
+  </PropertyGroup>
+
+  <!-- C# Version -->
+  <PropertyGroup>
+    <!--
+    <CSHARP Condition="$(LangVersion) == 1  ">CSHARP_10</CSHARP>
+    <CSHARP Condition="$(LangVersion) == 1.2">CSHARP_12</CSHARP>
+    -->
+    <CSHARP Condition="$(LangVersion) == '2.0'">CSHARP_20</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '3.0'">CSHARP_30</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '4.0'">CSHARP_40</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '5.0'">CSHARP_50</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '6.0'">CSHARP_60</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '7.0' OR $(LangVersion) == '7.1' OR $(LangVersion) == '7.2' OR $(LangVersion) == '7.3'">CSHARP_70</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '8.0'">CSHARP_80</CSHARP>
+
+    <BuildConstants Condition="'$(CSHARP)' != ''">$(BuildConstants)$(CSHARP);</BuildConstants>
+  </PropertyGroup>
+
+  <!--- Messages -->
+  <Target Name="BeforeBuild">
+
+    <Message Importance="High" Text="BuildConstants: $(BuildConstants)" />
+    <Message Importance="High" Text="DefineConstants: $(DefineConstants)" />
+
+    <Message Importance="High" Text="FrameworkVersion: $(FrameworkVersion)" />
+    <Message Importance="High" Text="FrameworkNumber: $(FrameworkNumber)" />
+
+    <Message Importance="High" Text="TargetFramework: $(TargetFramework)" />
+    <Message Importance="High" Text="TargetFrameworkProfile: $(TargetFrameworkProfile)" />
+    <Message Importance="High" Text="TargetFrameworkVersion: $(TargetFrameworkVersion)" />
+    <Message Importance="High" Text="LangVersion: $(LangVersion)" />
+
+    <Message Importance="High" Condition="'$(NETFX)' != ''"  Text="Frameworks: $(NETFX)" />
+    <Message Importance="High" Condition="'$(NETSTANDARD)' != ''"  Text="Frameworks: $(NETSTANDARD)" />
+    <Message Importance="High" Condition="'$(NETCORE)' != ''"  Text="Frameworks: $(NETCORE)" />
+    <Message Importance="High" Condition="'$(CSHARP)' != ''" Text="Language: $(CSHARP)" />
+  </Target>
+
+  <PropertyGroup>
+    <DefineConstants Condition="'$(BuildConstants)' != ''">$(BuildConstants)$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+</Project>
