@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="..\..\Microsoft.Bcl.Build.Symbols\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\Microsoft.Bcl.Build.Symbols\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\Microsoft.Bcl.Build.Symbols\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Microsoft.Bcl.Build.Symbols\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+</Project>

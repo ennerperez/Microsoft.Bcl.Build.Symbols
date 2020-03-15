@@ -10,7 +10,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("Microsoft")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
+#if !NETSTANDARD_10 && !NETSTANDARD_11
 [assembly: Guid("A619D960-0942-47BC-B908-F940ECBFA1E1")]
+#endif
 [assembly: AssemblyVersion("1.2.*")]
 [assembly: AssemblyFileVersion("1.2.0")]
 [assembly: NeutralResourcesLanguage("en")]
