@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
     <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
