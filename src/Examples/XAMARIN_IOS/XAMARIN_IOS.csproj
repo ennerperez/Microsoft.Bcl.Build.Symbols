@@ -41,6 +41,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
     <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>

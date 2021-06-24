@@ -72,6 +72,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.4'">NETSTANDARD_14</NETSTANDARD>
     <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.5'">NETSTANDARD_15</NETSTANDARD>
     <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.6'">NETSTANDARD_16</NETSTANDARD>
+    <NETSTANDARD Condition="$(TargetFramework) == 'netstandard1.7'">NETSTANDARD_17</NETSTANDARD>
     <NETSTANDARD Condition="$(TargetFramework) == 'netstandard2.0'">NETSTANDARD_20</NETSTANDARD>
     <NETSTANDARD Condition="$(TargetFramework) == 'netstandard2.1'">NETSTANDARD_21</NETSTANDARD>
 
@@ -95,7 +96,10 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <BuildConstants Condition="'$(ISNETCORE)' != ''">$(BuildConstants)$(ISNETCORE);</BuildConstants>
     <BuildConstants Condition="'$(NETCORE)' != ''">$(BuildConstants)$(NETCORE);</BuildConstants>
   </PropertyGroup>
-
+  <!-- NET -->
+  <PropertyGroup>
+    <NETCORE Condition="$(TargetFramework) == 'net5.0'">NET_50</NETCORE>
+  </PropertyGroup>
   <!--- Profiles -->
   <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
     <BuildConstants Condition="$(TargetFrameworkProfile.StartsWith('Profile'))">$(BuildConstants)PORTABLE;PROFILE_$(TargetFrameworkProfile.ToUpper().Substring(7));</BuildConstants>
@@ -130,7 +134,11 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <CSHARP Condition="$(LangVersion) == '5.0'">CSHARP_50</CSHARP>
     <CSHARP Condition="$(LangVersion) == '6.0'">CSHARP_60</CSHARP>
     <CSHARP Condition="$(LangVersion) == '7.0' OR $(LangVersion) == '7.1' OR $(LangVersion) == '7.2' OR $(LangVersion) == '7.3'">CSHARP_70</CSHARP>
-    <CSHARP Condition="$(LangVersion) == '8.0' OR ($(NETCORE) != '' AND $(FrameworkNumber) &gt;= 300)">CSHARP_80</CSHARP>
+    <!--    <CSHARP Condition="$(LangVersion) == '7.1'">CSHARP_71</CSHARP>-->
+    <!--    <CSHARP Condition="$(LangVersion) == '7.2'">CSHARP_72</CSHARP>-->
+    <!--    <CSHARP Condition="$(LangVersion) == '7.3'">CSHARP_73</CSHARP>-->
+    <CSHARP Condition="$(LangVersion) == '8.0'">CSHARP_80</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '9.0'">CSHARP_90</CSHARP>
 
     <BuildConstants Condition="'$(CSHARP)' != ''">$(BuildConstants)$(CSHARP);</BuildConstants>
   </PropertyGroup>
