@@ -57,6 +57,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <NETFX Condition="$(FrameworkNumber) == 471">NETFX_471</NETFX>
     <NETFX Condition="$(FrameworkNumber) == 472">NETFX_472</NETFX>
     <NETFX Condition="$(FrameworkNumber) == 480">NETFX_48</NETFX>
+    <NETFX Condition="$(FrameworkNumber) == 481">NETFX_481</NETFX>
 
     <ISNETFX Condition="'$(ISNETFX)' == ''">NETFX</ISNETFX>
 
@@ -99,6 +100,9 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
   <!-- NET -->
   <PropertyGroup>
     <NETCORE Condition="$(TargetFramework) == 'net5.0'">NET_50</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net6.0'">NET_60</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net7.0'">NET_70</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net8.0'">NET_80</NETCORE>
   </PropertyGroup>
   <!--- Profiles -->
   <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
@@ -139,6 +143,8 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <!--    <CSHARP Condition="$(LangVersion) == '7.3'">CSHARP_73</CSHARP>-->
     <CSHARP Condition="$(LangVersion) == '8.0'">CSHARP_80</CSHARP>
     <CSHARP Condition="$(LangVersion) == '9.0'">CSHARP_90</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '10.0'">CSHARP_10</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '11.0'">CSHARP_11</CSHARP>
 
     <BuildConstants Condition="'$(CSHARP)' != ''">$(BuildConstants)$(CSHARP);</BuildConstants>
   </PropertyGroup>
