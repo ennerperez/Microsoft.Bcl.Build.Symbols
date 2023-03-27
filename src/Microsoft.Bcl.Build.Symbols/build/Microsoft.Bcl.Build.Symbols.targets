@@ -57,6 +57,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <NETFX Condition="$(FrameworkNumber) == 471">NETFX_471</NETFX>
     <NETFX Condition="$(FrameworkNumber) == 472">NETFX_472</NETFX>
     <NETFX Condition="$(FrameworkNumber) == 480">NETFX_48</NETFX>
+    <NETFX Condition="$(FrameworkNumber) == 481">NETFX_481</NETFX>
 
     <ISNETFX Condition="'$(ISNETFX)' == ''">NETFX</ISNETFX>
 
