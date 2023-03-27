@@ -100,6 +100,9 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
   <!-- NET -->
   <PropertyGroup>
     <NETCORE Condition="$(TargetFramework) == 'net5.0'">NET_50</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net6.0'">NET_60</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net7.0'">NET_70</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net8.0'">NET_80</NETCORE>
   </PropertyGroup>
   <!--- Profiles -->
   <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
