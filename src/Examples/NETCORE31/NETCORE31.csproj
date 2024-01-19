@@ -4,7 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>false</Deterministic>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
+
+  <Import Project="..\..\Microsoft.Bcl.Build.Symbols\build\Microsoft.Bcl.Build.Symbols.targets"/>
 
   <ItemGroup>
     <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Program.cs">
