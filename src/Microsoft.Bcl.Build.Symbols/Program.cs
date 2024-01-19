@@ -58,6 +58,8 @@ namespace Microsoft.Bcl.Build.Symbols
             framework = ".NET Framework 4.7.2";
 #elif NETFX_48
             framework = ".NET Framework 4.8";
+#elif NETFX_481
+            framework = ".NET Framework 4.8.1";
 #elif NETSTANDARD_10
             framework = ".NET Standard 1.0";
 #elif NETSTANDARD_11
@@ -94,6 +96,14 @@ namespace Microsoft.Bcl.Build.Symbols
             framework = ".NET Core 3.1";
 #elif NET_50
             framework = ".NET 5.0";
+#elif NET_60
+            framework = ".NET 6.0";
+#elif NET_70
+            framework = ".NET 7.0";
+#elif NET_80
+            framework = ".NET 8.0";
+#elif NET_90
+            framework = ".NET 9.0";
 #endif
 
 /* ************** */
@@ -116,6 +126,12 @@ namespace Microsoft.Bcl.Build.Symbols
             csversion = "8.0";
 #elif CSHARP_90
             csversion = "9.0";
+#elif CSHARP_10
+            csversion = "10.0";
+#elif CSHARP_11
+            csversion = "11.0";
+#elif CSHARP_12
+            csversion = "12.0";
 #endif
 
             Debug.WriteLine($"Hello {framework} {platform} with C# {csversion}");

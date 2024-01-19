@@ -103,6 +103,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <NETCORE Condition="$(TargetFramework) == 'net6.0'">NET_60</NETCORE>
     <NETCORE Condition="$(TargetFramework) == 'net7.0'">NET_70</NETCORE>
     <NETCORE Condition="$(TargetFramework) == 'net8.0'">NET_80</NETCORE>
+    <NETCORE Condition="$(TargetFramework) == 'net9.0'">NET_90</NETCORE>
   </PropertyGroup>
   <!--- Profiles -->
   <PropertyGroup Condition="'$(TargetFrameworkProfile)' != ''">
@@ -145,6 +146,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
     <CSHARP Condition="$(LangVersion) == '9.0'">CSHARP_90</CSHARP>
     <CSHARP Condition="$(LangVersion) == '10.0'">CSHARP_10</CSHARP>
     <CSHARP Condition="$(LangVersion) == '11.0'">CSHARP_11</CSHARP>
+    <CSHARP Condition="$(LangVersion) == '12.0'">CSHARP_12</CSHARP>
 
     <BuildConstants Condition="'$(CSHARP)' != ''">$(BuildConstants)$(CSHARP);</BuildConstants>
   </PropertyGroup>

@@ -6,6 +6,8 @@
     <Deterministic>false</Deterministic>
   </PropertyGroup>
 
+  <Import Project="..\..\Microsoft.Bcl.Build.Symbols\build\Microsoft.Bcl.Build.Symbols.targets"/>
+
   <ItemGroup>
     <Compile Include="..\..\Microsoft.Bcl.Build.Symbols\Program.cs">
       <Link>Program.cs</Link>

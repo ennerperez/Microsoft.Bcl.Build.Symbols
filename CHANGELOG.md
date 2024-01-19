@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.28] - [2024-01-19]
+### Changed
+- .NET 9.0
+- CSharp 12
+
 ## [1.1.27] - [2020-03-15]
 ### Changed
 - .NET Core Detection
